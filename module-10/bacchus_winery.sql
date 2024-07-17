@@ -1,9 +1,6 @@
 CREATE DATABASE BacchusWinery; 
 
 USE BacchusWinery; 
-
- 
-
 -- Create tables 
 
 CREATE TABLE Wine ( 
@@ -18,8 +15,6 @@ Price DECIMAL(10, 2)
 
 ); 
 
- 
-
 CREATE TABLE Supplier ( 
 
 SupplierID INT PRIMARY KEY AUTO_INCREMENT, 
@@ -28,11 +23,7 @@ SupplierName VARCHAR(100),
 
 ContactInfo VARCHAR(100) 
 
-); 
-
- 
-
-CREATE TABLE Supply ( 
+); CREATE TABLE Supply ( 
 
 SupplyID INT PRIMARY KEY AUTO_INCREMENT, 
 
@@ -45,9 +36,6 @@ SupplierID INT,
 FOREIGN KEY (SupplierID) REFERENCES Supplier(SupplierID) 
 
 ); 
-
- 
-
 CREATE TABLE Distributor ( 
 
 DistributorID INT PRIMARY KEY AUTO_INCREMENT, 
@@ -56,11 +44,7 @@ DistributorName VARCHAR(100),
 
 ContactInfo VARCHAR(100) 
 
-); 
-
- 
-
-CREATE TABLE Orders ( 
+); CREATE TABLE Orders ( 
 
 OrderID INT PRIMARY KEY AUTO_INCREMENT, 
 
@@ -72,9 +56,7 @@ FOREIGN KEY (DistributorID) REFERENCES Distributor(DistributorID)
 
 ); 
 
- 
-
-CREATE TABLE OrderDetails ( 
+ CREATE TABLE OrderDetails ( 
 
 OrderDetailsID INT PRIMARY KEY AUTO_INCREMENT, 
 
@@ -89,9 +71,6 @@ FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
 FOREIGN KEY (WineID) REFERENCES Wine(WineID) 
 
 ); 
-
- 
-
 CREATE TABLE Employee ( 
 
 EmployeeID INT PRIMARY KEY AUTO_INCREMENT, 
@@ -103,9 +82,6 @@ Department VARCHAR(50),
 HoursWorked INT 
 
 ); 
-
- 
-
 -- Insert sample data 
 
 INSERT INTO Wine (WineName, Type, Price) VALUES  
@@ -118,17 +94,13 @@ INSERT INTO Wine (WineName, Type, Price) VALUES
 
 ('Chardonnay', 'White', 18.25); 
 
- 
-
-INSERT INTO Supplier (SupplierName, ContactInfo) VALUES  
+ INSERT INTO Supplier (SupplierName, ContactInfo) VALUES  
 
 ('Bottle Supplier', '123-456-7890'), 
 
 ('Label Supplier', '234-567-8901'), 
 
 ('Vats Supplier', '345-678-9012'); 
-
- 
 
 INSERT INTO Supply (SupplyType, Quantity, SupplierID) VALUES  
 
@@ -144,8 +116,6 @@ INSERT INTO Supply (SupplyType, Quantity, SupplierID) VALUES
 
 ('Tubing', 100, 3); 
 
- 
-
 INSERT INTO Distributor (DistributorName, ContactInfo) VALUES  
 
 ('Wine Distributors Inc.', '456-789-0123'), 
@@ -154,17 +124,13 @@ INSERT INTO Distributor (DistributorName, ContactInfo) VALUES
 
 ('Local Wine Shop', '678-901-2345'); 
 
- 
-
 INSERT INTO Orders (OrderDate, DistributorID) VALUES  
 
 ('2024-07-01', 1),  
 
 ('2024-07-02', 2),  
 
-('2024-07-03', 3); 
-
- 
+('2024-07-03', 3);
 
 INSERT INTO OrderDetails (OrderID, WineID, Quantity) VALUES  
 
@@ -180,8 +146,6 @@ INSERT INTO OrderDetails (OrderID, WineID, Quantity) VALUES
 
 (3, 3, 10); 
 
- 
-
 INSERT INTO Employee (EmployeeName, Department, HoursWorked) VALUES  
 
 ('Janet Collins', 'Finance', 160),  
@@ -195,5 +159,3 @@ INSERT INTO Employee (EmployeeName, Department, HoursWorked) VALUES
 ('Maria Costanza', 'Distribution', 155),  
 
 ('Stan Bacchus', 'Management', 180); 
-
- SHOW TABLES
